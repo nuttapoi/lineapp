@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  nodejs-linebot:
+    container_name: nodejs-linebot
+    restart: always
+    image: drugstoresoft/linebot
+    ports:
+      - "3000:80"
+    environment:
+      VIRTUAL_HOST: linebot.drugstoresoft.com
+      VIRTUAL_PROTO: http
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: linebot.drugstoresoft.com
+      LETSENCRYPT_EMAIL: linebot@drugstoresoft.com
+
+networks:
+  default:
+     external:
+        name: nginx-proxy
